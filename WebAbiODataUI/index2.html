@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>WebApiOdata UI</title>
+	<meta charset="utf-8" />
+    <script src="Scripts/jquery-3.1.1.js"></script>
+</head>
+<body>
+    <h1>Kategori Ekleme</h1>
+    <label>Ad : </label>
+    <input type="text" id="cname" value="" name="name" /><br />
+    <label>Açıklama : </label>
+    <input type="text" id="cdesc" value="" name="name" /><br />
+
+    <button>Ekle</button>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("button").click(function () {
+            cat = new Object();
+            cat.CategoryName = $("#cname").val();
+            cat.Description = $("#cdesc").val();
+
+            $.ajax({
+                url: "http://localhost:54311/api/category/PostCategory",
+                data: cat,
+                type: "POST",
+                success: function () {
+                    alert("kategoriyi eklediniz")
+                }
+            })
+        })
+    })  
+</script>

@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>WebApiOData UI</title>
+    <meta charset="utf-8" />
+    <script src="Scripts/jquery-3.1.1.js"></script>
+</head>
+<body>
+    <div>
+        <button id="btn1">Supplier Servisten çek</button>
+        <br /><br />
+        <ul id="ul1"></ul>
+    </div>
+    <div>
+        <button id="btn2">Product Servisten çek</button>
+        <br /><br />
+        <ul id="ul2"></ul>
+    </div>
+
+   
+</body>
+</html>
+<script>
+
+    $("#btn1").click(function () {
+        $("li").remove();
+        $.getJSON("http://localhost:54311/api/supplier/GetAllSuppliers", function (data) {
+            $.each(data, function (key, item) {
+                $("#ul1").append("<li>" + item.CompanyName + "</li>")
+            })
+        })
+    })
+
+    $("#btn2").click(function () {
+        $("li").remove();
+        $.getJSON("http://localhost:54311/api/product/GetAllProducts", function (data) {
+            $.each(data, function (key, item) {
+                $("#ul2").append("<li>" + item.ProductName + "</li>")
+            })
+        })
+    })
+
+
+
+    
+</script>
